@@ -1,0 +1,26 @@
+# MTL for doom.wad, map E1M1
+# Created by GZDoom Builder 2.3.0.2787
+
+newmtl ZMINUS
+Kd 1.0 1.0 1.0
+map_Kd resources/DefaultCube/grid_-z.png
+
+newmtl ZPLUS
+Kd 1.0 1.0 1.0
+map_Kd resources/DefaultCube/grid_+z.png
+
+newmtl XMINUS
+Kd 1.0 1.0 1.0
+map_Kd resources/DefaultCube/grid_-x.png
+
+newmtl XPLUS
+Kd 1.0 1.0 1.0
+map_Kd resources/DefaultCube/grid_+x.png
+
+newmtl YMINUS
+Kd 1.0 1.0 1.0
+map_Kd resources/DefaultCube/grid_-y.png
+
+newmtl YPLUS
+Kd 1.0 1.0 1.0
+map_Kd resources/DefaultCube/grid_+y.png

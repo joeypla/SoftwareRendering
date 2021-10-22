@@ -1,0 +1,17 @@
+o FlatTriangle
+mtllib defaultcube.mtl
+# front face (-z)
+v 0 0 -20
+v -5 0 20
+v 5 0 20
+
+vt 0 0
+vt 1 0
+vt 1 1
+
+vn 0 1 0
+vn 0 1 0
+vn 0 1 0
+usemtl YPLUS
+f 1/1/1 2/2/2 3/3/3
+
