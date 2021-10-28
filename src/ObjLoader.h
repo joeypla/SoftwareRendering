@@ -697,7 +697,9 @@ namespace objl
 					{
 						// JOEY : BUG: MeshMatNames can be larger than LoadedMeshes.
 						// Need to look into and maybe ask dude to submit fix.
-						if (i >= LoadedMeshes.size()) break;
+						/*if (i >= LoadedMeshes.size()) {
+							int p = 0;
+						}*/
 
 						LoadedMeshes[i].MeshMaterial = LoadedMaterials[j];
 						break;

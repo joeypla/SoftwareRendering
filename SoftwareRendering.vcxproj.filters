@@ -13,78 +13,81 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="src">
+      <UniqueIdentifier>{fcd9535f-d955-4861-aa63-eb2171837f6b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\Geometry.cpp">
+      <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="Math.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\Helpers.cpp">
+      <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="WireMesh.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\main.cpp">
+      <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="Texture.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\Material.cpp">
+      <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="Mesh.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\Math.cpp">
+      <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="Resources.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\Mesh.cpp">
+      <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="Material.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\Rasterizer.cpp">
+      <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="Rasterizer.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\Resources.cpp">
+      <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="Geometry.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\Scene.cpp">
+      <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="Scene.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\Texture.cpp">
+      <Filter>src</Filter>
     </ClCompile>
-    <ClCompile Include="Helpers.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="src\WireMesh.cpp">
+      <Filter>src</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Math.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Geometry.h">
+      <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="main.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Helpers.h">
+      <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="WireMesh.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\main.h">
+      <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="Texture.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Material.h">
+      <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="Mesh.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Math.h">
+      <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="ObjLoader.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Mesh.h">
+      <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="Resources.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\ObjLoader.h">
+      <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="Material.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Rasterizer.h">
+      <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="Rasterizer.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Resources.h">
+      <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="Geometry.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Scene.h">
+      <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="Scene.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\Texture.h">
+      <Filter>src</Filter>
     </ClInclude>
-    <ClInclude Include="Helpers.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="src\WireMesh.h">
+      <Filter>src</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

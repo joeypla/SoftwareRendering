@@ -32,7 +32,6 @@ float rf(float min, float max)
 static float timeT;
 static SDL_Renderer* activeRenderer;
 
-Texture uvTexture;
 int main(int argc, char* args[])
 {
 
@@ -46,7 +45,7 @@ int main(int argc, char* args[])
     }
 
     SDL_CreateWindowAndRenderer(Rasterizer::WIDTH, Rasterizer::HEIGHT, 0, &window, &activeRenderer);
-    Rasterizer::Init(activeRenderer, SDL_GetWindowSurface(window));
+    Rasterizer::Init(activeRenderer, window);
     
     int tic = (int)(1.0f / 60.0f * 1000.0f); // for milliseconds
     float rotate = 0.0f;
@@ -59,11 +58,12 @@ int main(int argc, char* args[])
 
 
 
+    // A few benchmarks that I should move into a separate performance tests module.
     //PixelFillBenchmark();
-    multithreadedFillBenchmark();
-    simdBenchmark();
+    //multithreadedFillBenchmark();
+    //simdBenchmark();
+    // 
     // Load Test texture
-    uvTexture.Load("resources/uvgrid.bmp");
     std::vector<std::string> objects = {
         std::string("resources/doom_E1M1.obj"),
         std::string("resources/DefaultCube/defaultcube.obj"),
@@ -71,7 +71,7 @@ int main(int argc, char* args[])
         std::string("resources/NatureFreePack1.obj")
     };
 
-    bool bLoaded = Resources::LoadObjFile(objects[1]);
+    bool bLoaded = Resources::LoadObjFile(objects[0]);
 
     if (!bLoaded)
         std::cout << "Could not load file." << std::endl;
@@ -140,6 +140,22 @@ void update(float deltaSeconds, std::shared_ptr<Scene> scene) {
     if (keystate[SDL_SCANCODE_KP_PLUS]) {
         cam.z += deltaSeconds * 100.0f;
     }
+
+    if (keystate[SDL_SCANCODE_COMMA]) {
+        cam.ry += deltaSeconds * 100.0f;
+    }
+
+    if (keystate[SDL_SCANCODE_COMMA]) {
+        cam.ry += deltaSeconds * 1.0f;
+    }
+
+    if (keystate[SDL_SCANCODE_PERIOD]) {
+        cam.ry -= deltaSeconds * 1.0f;
+    }
+
+    if (keystate[SDL_SCANCODE_SPACE]) {
+        Rasterizer::ShowScanlineOnce();
+    }
 }
 
 std::shared_ptr<Scene> CreateSceneFromLoadedResources() {
@@ -154,20 +170,20 @@ std::shared_ptr<Scene> CreateSceneFromLoadedResources() {
     }
 
     // Doom level values.
-    //auto& cam = scene->GetCamera();
-    //cam.near = 1.0f;
-    //cam.far = 5000.0f;
-    //cam.fov = 3.14159f / 2.0f; // 90 degrees.
-    //cam.x = -1600.0f;
-    //cam.y = 30.0f;
-    //cam.z = -3800.0f;
-
     auto& cam = scene->GetCamera();
-    cam.near = 0.1f;
-    cam.far = 200.0f;
+    cam.near = 1.0f;
+    cam.far = 5000.0f;
     cam.fov = 3.14159f / 2.0f; // 90 degrees.
-    cam.z = -5.0f;
-    cam.y = 0;
+    cam.x = -1600.0f;
+    cam.y = 30.0f;
+    cam.z = -3800.0f;
+
+    //auto& cam = scene->GetCamera();
+    //cam.near = 0.1f;
+    //cam.far = 200.0f;
+    //cam.fov = 3.14159f / 2.0f; // 90 degrees.
+    //cam.z = -5.0f;
+    //cam.y = 0;
     return scene;
 }
 

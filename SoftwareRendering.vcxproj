@@ -215,31 +215,31 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Geometry.cpp" />
-    <ClCompile Include="Helpers.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="Material.cpp" />
-    <ClCompile Include="Math.cpp" />
-    <ClCompile Include="Mesh.cpp" />
-    <ClCompile Include="Rasterizer.cpp" />
-    <ClCompile Include="Resources.cpp" />
-    <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="Texture.cpp" />
-    <ClCompile Include="WireMesh.cpp" />
+    <ClCompile Include="src\Geometry.cpp" />
+    <ClCompile Include="src\Helpers.cpp" />
+    <ClCompile Include="src\main.cpp" />
+    <ClCompile Include="src\Material.cpp" />
+    <ClCompile Include="src\Math.cpp" />
+    <ClCompile Include="src\Mesh.cpp" />
+    <ClCompile Include="src\Rasterizer.cpp" />
+    <ClCompile Include="src\Resources.cpp" />
+    <ClCompile Include="src\Scene.cpp" />
+    <ClCompile Include="src\Texture.cpp" />
+    <ClCompile Include="src\WireMesh.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Geometry.h" />
-    <ClInclude Include="Helpers.h" />
-    <ClInclude Include="main.h" />
-    <ClInclude Include="Material.h" />
-    <ClInclude Include="Math.h" />
-    <ClInclude Include="Mesh.h" />
-    <ClInclude Include="ObjLoader.h" />
-    <ClInclude Include="Rasterizer.h" />
-    <ClInclude Include="Resources.h" />
-    <ClInclude Include="Scene.h" />
-    <ClInclude Include="Texture.h" />
-    <ClInclude Include="WireMesh.h" />
+    <ClInclude Include="src\Geometry.h" />
+    <ClInclude Include="src\Helpers.h" />
+    <ClInclude Include="src\main.h" />
+    <ClInclude Include="src\Material.h" />
+    <ClInclude Include="src\Math.h" />
+    <ClInclude Include="src\Mesh.h" />
+    <ClInclude Include="src\ObjLoader.h" />
+    <ClInclude Include="src\Rasterizer.h" />
+    <ClInclude Include="src\Resources.h" />
+    <ClInclude Include="src\Scene.h" />
+    <ClInclude Include="src\Texture.h" />
+    <ClInclude Include="src\WireMesh.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

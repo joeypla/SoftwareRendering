@@ -7,10 +7,10 @@ struct Triangle;
 class Material;
 
 namespace Rasterizer {
-	const int WIDTH = 2048;
-	const int HEIGHT = 2048;
+	const int WIDTH = 512;
+	const int HEIGHT = 512;
 
-	void Init(SDL_Renderer* renderer, SDL_Surface* rasterSurface);
+	void Init(SDL_Renderer* renderer, SDL_Window* pWindow);
 	void SetMaterial(Material* material);
 	void DrawLine_naive(const Vec2& p1, const Vec2& p2);
 	void DrawTriangle(const Vertex& v0, const Vertex& v1, const Vertex& v2);
@@ -23,4 +23,6 @@ namespace Rasterizer {
 	void ClearColorBuffer();
 	int GetWriteCount();
 	void ResetWriteCount();
+	void ShowScanlineOnce();
+	void ResetShowScanline();
 }

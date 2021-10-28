@@ -32,6 +32,7 @@ bool Resources::LoadObjFile(std::string path) {
 		// need to load texture for material.
 		Material* newMat = new Material();
 		newMat->LoadDiffuse(m->map_Kd);
+		std::cout << "New Material: " << m->name << std::endl;
 		materials.insert(std::make_pair(m->name, newMat));
 	}
 

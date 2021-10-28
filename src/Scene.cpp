@@ -114,6 +114,7 @@ void Scene::Render(SDL_Renderer* renderer) {
 	//std::cout << "Raster write Count: " << writeCount << std::endl;
 	//std::cout << "Frame time(ms): " << Benchmark::timings.find("FrameTime")->second << std::endl;
 	frameNumber++;
+	Rasterizer::ResetShowScanline();
 }
 
 void Scene::AddInstance(const Instance& instance)

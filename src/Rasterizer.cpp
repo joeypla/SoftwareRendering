@@ -13,12 +13,15 @@
 static SDL_Renderer* activeRenderer = nullptr;
 static SDL_Surface* colorSurface = nullptr;
 static SDL_Surface* depthSurface = nullptr;
+static SDL_Window* window = nullptr;
 static Material* activeMaterial;
 
 static int writeCount = 0;
-void Rasterizer::Init(SDL_Renderer* renderer, SDL_Surface* surface)
+static bool showScanline = false;
+void Rasterizer::Init(SDL_Renderer* renderer, SDL_Window* pWindow)
 {
-    colorSurface = surface;
+    window = pWindow;
+    colorSurface = SDL_GetWindowSurface(window);
     activeRenderer = renderer;
     CreateDepthBuffer();
 }
@@ -100,9 +103,9 @@ void Write_fast(int x, int y, Vec4 color)
 
 void Write_faster(Uint8* pixels, int pitch, int x, int y, Vec4 color) {
     Uint8* pixel = pixels + y * pitch + x * 4; // assumes 4 bytes per pixel.
-    pixel[0] = (Uint8)(color.x * 255.0f);
+    pixel[2] = (Uint8)(color.x * 255.0f);
     pixel[1] = (Uint8)(color.y * 255.0f);
-    pixel[2] = (Uint8)(color.z * 255.0f);
+    pixel[0] = (Uint8)(color.z * 255.0f);
     writeCount++;
 }
 
@@ -141,9 +144,11 @@ void scanline(int xStart, int xEnd, float depthStart, float depthEnd, int y, con
         interpVertex_fast(tri, u, v, w, &vi);
         
         if (vi.pos.z < GetDepth(x, y)) {
-            //Write_faster(surfacePixel, surfacePitch, x, y, activeMaterial->Shade(vi));
-            Write_faster(surfacePixel, surfacePitch, x, y, Vec4(1,1,1,1));
+            Write_faster(surfacePixel, surfacePitch, x, y, activeMaterial->Shade(vi));
+            //Write_faster(surfacePixel, surfacePitch, x, y, Vec4(1,1,1,1));
             WriteDepth(x, y, vi.pos.z);
+            if (showScanline)
+                SDL_UpdateWindowSurface(window);
         }
     }
 }
@@ -500,3 +505,11 @@ void Rasterizer::ClearColorBuffer() {
 }
 int Rasterizer::GetWriteCount() { return writeCount; }
 void Rasterizer::ResetWriteCount() { writeCount = 0; }
+
+void Rasterizer::ShowScanlineOnce() {
+    showScanline = true;
+}
+
+void Rasterizer::ResetShowScanline() {
+    showScanline = false;
+}

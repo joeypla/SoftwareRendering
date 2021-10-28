@@ -24,7 +24,9 @@ Vec4 Texture::Sample(float u, float v)
 	auto pixel = (Uint8*)surface->pixels
 			+ y * surface->pitch
 			+ x * surface->format->BytesPerPixel;
-
+	// b, g, r, a
+	//return Vec4(0, 0, 0, 1);
+	//return Vec4(modu, modv, 0, 0);
 	return Vec4(pixel[0] / 255.0f, pixel[1] / 255.0f, pixel[2] / 255.0f, pixel[3] / 255.0f);
 }
 
