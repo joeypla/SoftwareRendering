@@ -8,3 +8,4 @@ Only .obj files can be loaded. Rendering is slow and nowhere near optimal. The c
 Below is a fun gif of the scan-line rasterization process in the original Doom level: E1M1.
 
 ![doom](https://user-images.githubusercontent.com/3723979/139187475-416b2e9a-aa6f-4aac-a03a-4ce8da486f9f.gif)
+![jppV7kPPZA](https://user-images.githubusercontent.com/3723979/139187980-d20dc75c-9df9-4546-b11a-38120e84b1be.gif)
