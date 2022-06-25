@@ -112,10 +112,12 @@ Vertex interpVertex(const Vertex& v0, const Vertex& v1, const Vertex& v2, float 
 }
 
 // Trying to get this faster by avoiding copies??
+
+// To-do: Is it possible that the read access violation is caused by a pointer to a const reference?
 void interpVertex_fast(const Triangle& tri, 
     float u, float v, float w, Vertex* vOut)
 {
-#define simd
+//#define simd
 #ifdef simd
     __m128 mu = _mm_set1_ps(u);
     __m128 mv = _mm_set1_ps(v);

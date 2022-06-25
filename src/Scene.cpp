@@ -39,14 +39,6 @@ void Scene::Render(SDL_Renderer* renderer) {
 			for (int i = 0; i < indices.size(); i += 3) {
 				if (i + 2 >= indices.size()) break;
 
-				/*if (mi == 23 && frameNumber == 9 && i == 21) {
-					std::cout << "Geometry divide by zero alpha" << std::endl;
-				}*/
-
-				/*if (mi == 5 && frameNumber == 0 && i == 27) {
-					std::cout << "Geometry divide by zero alpha" << std::endl;
-				}*/
-
 				Triangle tri = {
 					vertices[indices[i]],
 					vertices[indices[i + 1]],
@@ -74,12 +66,8 @@ void Scene::Render(SDL_Renderer* renderer) {
 						divide(tri.v2);
 				};
 
-
-
 				t(tri, model);
 				t(tri, view);
-
-
 				t(tri, proj);
 
 				// Before we put coordinates into ndc space with perspective divide, we're going to do some
@@ -87,24 +75,18 @@ void Scene::Render(SDL_Renderer* renderer) {
 				if (Rasterizer::EarlyFullClip(tri))
 					continue;
 
+				// Perform back-face culling.
 				/*Vec3 projNormal = Vec3::Cross(Vec3(tri.v1.pos - tri.v0.pos), Vec3(tri.v2.pos - tri.v0.pos));
 				if ((projNormal * Vec3(0, 0, -1)) >= 0.0f) continue;*/
 
+				// Possibly create new vertices and triangles if they extend before the near clip plane.
 				std::vector<Triangle> tris;
 				Rasterizer::GeometryClipZNear(tri, tris);
-
 
 				for (auto& triangle : tris) {
 					// Perspective divide (Clip space => NDC space)
 					p(triangle);
-
-					// Check for back face culling.
-
-
-
-
 					t(triangle, screen);
-
 					Rasterizer::DrawTriangle(triangle);
 				}
 			}

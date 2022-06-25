@@ -40,7 +40,7 @@ int main(int argc, char* args[])
     if (SDL_Init(SDL_INIT_VIDEO) < 0) {
         printf("SDL could not initialize! SDL_Error: %s\n", SDL_GetError());
         SDL_Delay(2000);
-        SDL_Quit();        
+        SDL_Quit();
         return 0;
     }
 
@@ -87,11 +87,19 @@ int main(int argc, char* args[])
     {   
         Uint32 startTicks = SDL_GetTicks();
         SDL_Event* e = NULL;
-        SDL_PollEvent(e);
-        if (e != NULL && e->type == SDL_QUIT) {
-            break;
-        }
 
+        float mousex, mousey;
+        while (SDL_PollEvent(e)) {
+
+            if (e != NULL && e->type == SDL_QUIT) {
+                break;
+            }
+
+            if (e->type == SDL_MOUSEMOTION) {
+                mousex = e->motion.xrel;
+                mousey= e->motion.yrel;
+            }
+        }
         update(deltaSeconds, scene);
 
         /*auto& cam = scene->GetCamera();
@@ -141,22 +149,20 @@ void update(float deltaSeconds, std::shared_ptr<Scene> scene) {
         cam.z += deltaSeconds * 100.0f;
     }
 
-    if (keystate[SDL_SCANCODE_COMMA]) {
-        cam.ry += deltaSeconds * 100.0f;
-    }
-
-    if (keystate[SDL_SCANCODE_COMMA]) {
-        cam.ry += deltaSeconds * 1.0f;
-    }
-
-    if (keystate[SDL_SCANCODE_PERIOD]) {
-        cam.ry -= deltaSeconds * 1.0f;
-    }
 
     if (keystate[SDL_SCANCODE_SPACE]) {
         Rasterizer::ShowScanlineOnce();
     }
 }
+
+
+void updateCameraRotation(float x, float y, float dt, std::shared_ptr<Scene> scene)
+{
+    Camera& cam = scene->GetCamera();
+    cam.rx += x * dt;
+    cam.ry += y * dt;
+}
+
 
 std::shared_ptr<Scene> CreateSceneFromLoadedResources() {
 

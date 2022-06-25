@@ -1,7 +1,10 @@
 #include "Helpers.h"
 
-std::unordered_map<std::string, double> Benchmark::timings;
-Benchmark::Benchmark(std::string name) {
+using namespace std;
+
+unordered_map<string, double> Benchmark::timings;
+
+Benchmark::Benchmark(string name) {
 	this->name = name;
 	start = SDL_GetPerformanceCounter();
 }
@@ -16,6 +19,6 @@ Benchmark::~Benchmark()
 		it->second = timing;
 	}
 	else {
-		timings.insert(std::make_pair(name, timing));
+		timings.insert(make_pair(name, timing));
 	}
 }

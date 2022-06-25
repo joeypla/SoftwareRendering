@@ -30,13 +30,6 @@ void Rasterizer::SetMaterial(Material* material) {
     activeMaterial = material;
 }
 
-//void PutPixel32_nolock(SDL_Surface* surface, int x, int y, Uint32 color)
-//{
-//    Uint8* pixel = (Uint8*)surface->pixels;
-//    pixel += (y * surface->pitch) + (x * sizeof(Uint32));
-//    *((Uint32*)pixel) = color;
-//}
-
 void WriteDepth(int x, int y, float depth)
 {
     
@@ -141,8 +134,9 @@ void scanline(int xStart, int xEnd, float depthStart, float depthEnd, int y, con
             u, v, w);
 
         Vertex vi; // Putting outside of the loop to avoid excessive copies.
-        interpVertex_fast(tri, u, v, w, &vi);
-        
+        //interpVertex_fast(tri, u, v, w, &vi);
+        vi = interpVertex(tri.v0, tri.v1, tri.v2, u, v, w);
+
         if (vi.pos.z < GetDepth(x, y)) {
             Write_faster(surfacePixel, surfacePitch, x, y, activeMaterial->Shade(vi));
             //Write_faster(surfacePixel, surfacePitch, x, y, Vec4(1,1,1,1));
